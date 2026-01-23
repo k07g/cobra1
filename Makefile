@@ -7,6 +7,10 @@ endif
 
 .PHONY: test fmt lint clean
 
+default: all
+
+all: fmt test
+
 test:
 	$(info ******************** running tests ********************)
 	go test -v ./...
