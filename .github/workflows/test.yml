@@ -1,0 +1,26 @@
+name: Test
+
+on:
+    push:
+    workflow_dispatch:
+
+jobs:
+    test:
+        strategy:
+            fail-fast: false
+            matrix:
+                go:
+                    - 25
+        name: 'ubuntu | 1.${{ matrix.go }}.x'
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-go@v6
+              with:
+                go-version: 1.${{ matrix.go }}.x
+                cache: true
+            - run: |
+                export GOBIN=$HOME/go/bin
+            - run: PATH=$HOME/go/bin/:$PATH make test
+
+
