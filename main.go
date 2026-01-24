@@ -1,7 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"github.com/k07g/cobra1/cmd"
+)
 
 func main() {
-	fmt.Println("cobra1 main start")
+	cmd.Execute()
 }
