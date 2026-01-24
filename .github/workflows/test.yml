@@ -2,7 +2,6 @@ name: Test
 
 on:
     push:
-    pull_request:
     workflow_dispatch:
 
 jobs:
@@ -11,7 +10,6 @@ jobs:
             fail-fast: false
             matrix:
                 go:
-                    - 24
                     - 25
         name: 'ubuntu | 1.${{ matrix.go }}.x'
         runs-on: ubuntu-latest
