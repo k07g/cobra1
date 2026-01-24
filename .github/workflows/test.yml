@@ -7,13 +7,19 @@ on:
 
 jobs:
     test:
-        name: 'ubuntu'
+        strategy:
+            fail-fast: false
+            matrix:
+                go:
+                    - 24
+                    - 25
+        name: 'ubuntu | 1.${{ matrix.go }}.x'
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
             - uses: actions/setup-go@v6
               with:
-                go-version: 1.25.x
+                go-version: 1.${{ matrix.go }}.x
                 cache: true
             - run: |
                 export GOBIN=$HOME/go/bin
