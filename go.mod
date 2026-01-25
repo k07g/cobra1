@@ -1,7 +1,5 @@
 module github.com/k07g/cobra1
 
-go 1.25.6
-
 require github.com/spf13/cobra v1.10.2
 
 require (

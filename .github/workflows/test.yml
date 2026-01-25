@@ -9,10 +9,13 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
+                platform:
+                    - ubuntu
+                    - macOS
                 go:
                     - 25
-        name: 'ubuntu | 1.${{ matrix.go }}.x'
-        runs-on: ubuntu-latest
+        name: '${{ matrix.platform }} | 1.${{ matrix.go }}.x'
+        runs-on: ${{ matrix.platform }}-latest
         steps:
             - uses: actions/checkout@v4
             - uses: actions/setup-go@v6
